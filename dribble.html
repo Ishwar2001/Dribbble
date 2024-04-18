@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up to Dribbble</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+        .taken-username {
+            display: none;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 70px;
+            left: 70px;
+            color: #846012;
+            font-size: 25px;
+            
+        }
+
+        .overlay-image {
+            position: absolute;
+            top: 20px;
+            left: 5px;
+            height: 30px;
+            width: 120px;
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 relative overflow-hidden">
+
+    <div class="w-screen h-screen flex flex-col md:flex-row">
+        <div class="md:w-2/5 relative">
+            <img src="web1-01.jpeg" alt="Art by Peter Tarka" class="w-full h-full object-cover" />
+            <div class="overlay-text"><b>Discover the worlds's top</b><br><b>Designers & Creatives.</b></div>
+            <img src="C:\Users\ishwa\OneDrive\Desktop\projects\dribble.png" alt="Dribble Logo" class="overlay-image" />
+        </div>
+        <div class="md:w-3/5 flex items-center justify-center p-8">
+            <div class="max-w-md w-full p-8">
+              <div class="overlay text-sm text-brown-600 absolute top-0 right-0 m-4">Already a member? <a href="log-in.html"
+                class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">Sign In</a>
+        </div>
+                <h2 class="text-3xl font-bold mb-8">Sign up to Dribbble</h2>
+                <div class="taken-username text-red-500 dark:text-red-400 mb-8">Username has already been taken</div>
+                <form class="space-y-8">
+                    <div class="flex space-x-4 items-center">
+                        <div class="w-1/2">
+                            <label for="name" class="block text-sm font-medium mb-2"><b>Name</b></label>
+                            <input id="name" type="text" placeholder="John"
+                                class="w-full border border-zinc-300 dark:border-zinc-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-transparent dark:focus:border-transparent" />
+                        </div>
+                        <div class="w-1/2">
+                            <label for="username" class="block text-sm font-medium mb-2">Username</label>
+                            <input id="username" type="text" placeholder="YourUsername"
+                                class="w-full border border-zinc-300 dark:border-zinc-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-transparent dark:focus:border-transparent" />
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                        <input id="email" type="email" placeholder="account@refero.design"
+                            class="w-full border border-zinc-300 dark:border-zinc-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-transparent dark:focus:border-transparent" />
+                    </div>
+                    <div>
+                        <label for="password" class="block text-sm font-medium mb-2">Password</label>
+                        <input id="password" type="password" placeholder="6+ characters"
+                            class="w-full border border-zinc-300 dark:border-zinc-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-transparent dark:focus:border-transparent" />
+                    </div>
+                    <div class="flex items-center">
+                        <input id="terms" type="checkbox"
+                            class="h-4 w-4 text-blue-600 dark:text-blue-400 focus:ring-blue-500 dark:focus:ring-blue-500 border-zinc-300 dark:border-zinc-700 rounded">
+                        <label for="terms"
+                            class="ml-2 block text-sm text-zinc-900 dark:text-zinc-300">Creating an account means
+                            you're okay with our <a href="#"
+                                class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">Terms
+                                of Service</a>, <a href="#"
+                                class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">Privacy
+                                Policy</a>, and our default <a href="#"
+                                class="text-blue-600 dark:text-blue-400 hover:text-blue-500 dark:hover:text-blue-300">Notification
+                                Settings</a>.</label>
+                    </div>
+                      <button type="submit"
+                          class="w-1/2 bg-pink-500 dark:bg-pink-600 text-white py-2 rounded-md hover:bg-pink-600 dark:hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 dark:focus:ring-pink-500 focus:ring-offset-2">Create
+                          Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

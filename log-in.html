@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .title {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .avatar {
+            margin-bottom: 40px;
+            text-align: left;
+            position: relative;
+        }
+
+        .avatar label {
+            margin-bottom: 10px;
+            color: #999;
+        }
+
+        .avatar .avatar-upload {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px dashed #ccc;
+            margin-bottom: 20px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            cursor: pointer;
+        }
+
+        .avatar .avatar-upload:hover {
+            border-color: #f8a5c2;
+        }
+
+        .avatar input[type="file"] {
+            display: none;
+        }
+
+        .avatar .plus-sign {
+            font-size: 24px;
+            color: #ccc;
+        }
+
+        .avatar .choose-image-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #fff;
+            color: #000;
+            padding: 8px 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .location {
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .location input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .location .next-btn {
+            background-color: #f8a5c2;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .location .next-btn:hover {
+            background-color: #ff7b9c;
+        }
+        
+        .return-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Welcome! Let's create your profile</h1>
+        <p class="description">Let others get to know you better! You can do these later</p>
+        <div class="avatar">
+            <h3>Add an avatar</h3>
+           
+            <div class="avatar-upload" onclick="document.getElementById('avatar').click();">
+                <input type="file" id="avatar" name="avatar" accept="image/*" onchange="displayImage(event)">
+                <div class="plus-sign">+</div>
+            </div>
+            <button class="choose-image-btn" onclick="document.getElementById('avatar').click();">Choose Image</button>
+        </div>
+        <div class="location">
+            <h3>Add your location</h3>
+            <input type="text" placeholder="Enter a location">
+            <a href="box.html"><button class="next-btn">Next</button></a>
+        </div>
+        <a href="dribble.html" alt="return-btn"><button class="return-btn">&#8617;</button></a>
+    </div>
+
+    <script>
+        function displayImage(event) {
+            var avatarUpload = document.querySelector('.avatar-upload');
+            avatarUpload.style.backgroundImage = `url(${URL.createObjectURL(event.target.files[0])})`;
+            avatarUpload.innerHTML = ''; // Clear the content
+        }
+    </script>
+    <script>
+        const input = document.getElementById('avatar');
+        const nextPageButton = document.getElementById('nextPageButton');
+
+        input.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                localStorage.setItem('uploadedPhoto', e.target.result);
+            };
+
+            reader.readAsDataURL(file);
+        });
+
+        nextPageButton.addEventListener('click', function() {
+            window.location.href = 'email.html'; // Redirect to the next page when the button is clicked
+        });
+    </script>
+</body>
+</html>

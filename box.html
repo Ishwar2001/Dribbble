@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+        }
+
+        .box {
+            position: relative;
+            width: 30%;
+            height: auto;
+            text-align: center;
+            padding: 20px;
+            overflow: visible;
+        }
+
+        .box img,
+        .box:hover h2,
+        .box:hover p {
+            width: calc(100% + 4px); /* Adjusting width to cover the border width */
+            height: auto;
+            position: relative; /* Positioning relative to adjust placement */
+            top: 0;
+            transition: top 0.3s ease; /* Transition for smooth movement */
+        }
+
+        .box:hover img,
+        .box:hover h2,
+        .box:hover p{
+            top: -80px; /* Move image up by 10 pixels on hover */
+        }
+
+        .box h2 {
+            font-size: 20px;
+            color: #111;
+            opacity: 1; /* Initially hidden */
+        }
+
+        .box p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease; /* Transition for opacity change */
+        }
+
+        .box:hover h2,
+        .box:hover p {
+            opacity: 1; /* Show content on hover */
+            text-align: center;
+        }
+
+        /* Add border style */
+        .box-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent; /* Initially transparent border */
+            border-radius: 20px; /* Add curved corners with a radius of 10px */
+            transition: border-color 0.3s ease; /* Transition for border color change */
+            box-sizing: border-box; /* Include border in box dimensions */
+            pointer-events: none; /* Prevent hover effect on border */
+            z-index: 1; /* Ensure border is behind content */
+        }
+
+        /* Change border color on hover */
+        .box:hover .box-border {
+            border-color: #df5188;
+        }
+
+        .box input[type="checkbox"] {
+            display: none;
+        }
+
+        .custom-checkbox {
+            display: block;
+            margin:  auto;
+            width: 15px;
+            height: 15px;
+            background-color: #eb4a8a;
+            border: 2px solid #eb4a8a;
+            border-radius: 50%;
+            cursor: pointer;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .custom-checkbox::before {
+            content: '\2713';
+            display: block;
+            color: #fff !important; /* White check mark */
+            font-size: 15px;
+            line-height: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .box input[type="checkbox"]:checked + .custom-checkbox::before {
+            color: #000;
+            opacity: 1;
+        }
+
+        .box-border {
+            /* other styles */
+            z-index: -1; /* Ensure border is behind the image */
+        }
+
+        .return-btn {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .finish-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .finish-section p {
+            margin-bottom: 10px;
+            display: none; /* Hide by default */
+        }
+
+        .finish-section p.show-message {
+            display: block; /* Show when triggered */
+        }
+
+        .finish-btn {
+            padding: 10px 50px;
+            background-color: #df5188;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .finish-btn:hover {
+            background-color: #c1406e;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="content">
+        <div class="box">
+            <div class="box-border"></div>
+            <img src="b4 (1).png" alt="Designer">
+            <h2>I'm a designer looking to share my work</h2>
+            <p>I'm a graphic designer with over 10 years of experience. I love creating beautiful designs and sharing them with the community.</p>
+            <br><input type="checkbox" id="checkbox1" onchange="toggleMessage()">
+            <label class="custom-checkbox" for="checkbox1"></label>
+        </div>
+        <div class="box">
+            <div class="box-border"></div>
+            <img src="b5.png" alt="Inspiration">
+            <h2>I'm looking for design inspiration</h2>
+            <p>With over 7 million shots from a vast community of designers, Dribbble is the leading source for design inspiration.</p>
+            <br><input type="checkbox" id="checkbox2" onchange="toggleMessage()">
+            <label class="custom-checkbox" for="checkbox2"></label>
+        </div>
+        <div class="box">
+            <div class="box-border"></div>
+            <img src="b6.png" alt="Multimedia">
+            <h2>I'm looking for multimedia content</h2>
+            <p>Dribbble is a place where you can find multimedia content like tutorials, case studies, and design challenges.</p>
+            <br><input type="checkbox" id="checkbox3" onchange="toggleMessage()">
+            <label class="custom-checkbox" for="checkbox3"></label>
+        </div>
+    </div>
+    <a href="log-in.html" alt="return-btn"><button class="return-btn">&#8617;</button></a>
+</div>
+    <div class="finish-section">
+        <p class="show-message"><b>Anything else? You can select multiple</b></p>
+        <a href="email.html"><button class="finish-btn"><b>Finish</b></button></a>
+        <p style="color: #666;">or press RETURN</p>
+    </div>
+    <p style="color: #666;text-align: center;font-size: small;"><b>or press RETURN</b></p>
+</div>
+
+<script>
+    function toggleMessage() {
+        var checkboxes = document.querySelectorAll('.box input[type="checkbox"]');
+        var message = document.querySelector('.finish-section p');
+
+        var isChecked = false;
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                isChecked = true;
+            }
+        });
+
+        if (isChecked) {
+            message.classList.add('show-message');
+        } else {
+            message.classList.remove('show-message');
+        }
+    }
+</script>
+
+</body>
+</html>
